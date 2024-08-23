@@ -1,4 +1,4 @@
-/*font - MPLUS Rounded 1c (google fonts)*/
+/*FONTS - MPLUS Rounded 1c (google fonts)*/
 /*Regular*/
 @font-face {
   font-family: "MPLUS Rounded";
@@ -74,7 +74,18 @@ video {
   height: auto;
 }
 
-/*variables*/
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+select,
+input {
+  border: none;
+  box-sizing: border-box;
+}
+
+/*VARIABLES*/
 :root {
   /*colors*/
   --wt-blue: #32bdbd;
@@ -84,9 +95,196 @@ video {
   --wt-cycling: #ffa400;
   --wt-running: #ef6351;
   --wt-delete: #cc3927;
-  --wt-opacity-bg: rgba(255, 255, 255, 10.5);
+  --wt-opacity-bg: 255, 255, 255, 10.5;
+
+  /*icons*/
+  --sort-icon: url("data:image/svg+xml,%3Csvg width='8.305' xmlns='http://www.w3.org/2000/svg' height='11.197' viewBox='806.152 358.8 8.305 11.197' fill='none'%3E%3Cpath d='M809.718 359.035a.853.853 0 0 1 1.175 0l3.321 3.198c.239.23.309.572.179.872a.832.832 0 0 1-.768.495h-6.641a.834.834 0 0 1-.768-.495.779.779 0 0 1 .179-.872l3.323-3.198Zm0 10.728-3.32-3.199a.774.774 0 0 1-.179-.872.83.83 0 0 1 .768-.495h6.638c.335 0 .638.195.768.495s.057.642-.179.872l-3.321 3.199a.855.855 0 0 1-1.175 0Z' style='fill: rgb(255, 255, 255); fill-opacity: 1;' class='fills' data-testid='svg-path'/%3E%3C/svg%3E");
 }
 
+/*HEADINGS*/
+.workout-tracker__logo-h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--wt-blue);
+  text-transform: uppercase;
+}
+
+.workout-tracker__h2 {
+  font-size: 22px;
+}
+
+.workout-tracker__h3 {
+  font-size: 12px;
+}
+
+/*APP STYLES*/
 body {
   font-family: "MPLUS Rounded", sans-serif;
+  margin: 0;
+}
+
+/*rendered map*/
+#workoutMap {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/*app interface where almost all interactions will happen*/
+#workoutMapInterface {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  background-color: var(--wt-dark-blue);
+  border-radius: 30px;
+}
+
+.workout-tracker__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+
+  padding: 25px 0;
+  border-bottom: 2px solid var(--wt-blue);
+}
+
+.workout-tracker__interface-container {
+  padding: 25px 40px;
+}
+
+/*container with total workouts, filter options and delete all workouts button*/
+.workout-tracker__interface-options {
+  display: flex;
+  align-items: flex-end;
+}
+
+.workout-tracker__interface-options .workout-tracker__h3 {
+  flex: 1;
+  color: var(--wt-blue);
+}
+
+.workout-tracker__interface-options #totalWorkouts {
+  color: white;
+  font-weight: 700;
+}
+
+/*custom select element for workout filtering*/
+.workout-tracker__custom-select {
+  position: relative;
+}
+
+.workout-tracker__custom-select::before {
+  position: absolute;
+  content: var(--sort-icon);
+  width: 8px;
+  height: auto;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+#sortWorkouts {
+  position: relative;
+  appearance: none;
+  width: 100%;
+  font-size: 13px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 3px;
+
+  background-color: #2b3032;
+  color: white;
+  font-family: "MPLUS Rounded", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/*delete all workouts button*/
+.workout-tracker__button-delete {
+  border: 1px solid var(--wt-delete);
+  border-radius: 3px;
+  padding: 4px 10px;
+
+  color: var(--wt-delete);
+  background-color: transparent;
+  margin-left: 15px;
+  transition: all 0.15s ease-in;
+
+  cursor: pointer;
+}
+
+.workout-tracker__button-delete:hover {
+  background-color: var(--wt-delete);
+  color: white;
+}
+
+/*Message only shows when a new session is empty - will toggle display attribute with JS*/
+#emptyMessage {
+  font-size: 15px;
+  color: white;
+}
+
+#emptyMessage figure {
+  display: inline-block;
+  margin: 20px 0 0 10px;
+}
+
+/*New workout form*/
+#workoutForm {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 30px 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 15px;
+}
+
+#workoutForm label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--wt-blue);
+}
+
+#workoutType,
+#workoutForm input {
+  appearance: none;
+  width: 100%;
+  border-radius: 5px;
+  padding: 6px 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--wt-dark-blue);
+}
+
+#workoutForm input {
+  color: #2b3032;
+}
+
+#workoutForm button {
+  background-color: transparent;
+  color: var(--wt-blue);
+  border: 1px solid var(--wt-blue);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  grid-column: 1 / span 2;
+
+  transition: all 0.15s ease-in;
+}
+
+#workoutForm button:hover {
+  background-color: var(--wt-blue);
+  color: var(--wt-dark-blue);
 }

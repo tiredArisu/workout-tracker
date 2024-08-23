@@ -10,120 +10,122 @@
     <title>Workout tracker</title>
   </head>
   <body>
-    <div id="workoutMap"</div>
+    <div id="workoutMap"></div>
     <div id="workoutMapInterface">
-        <div class="workout-tracker__logo-container">
-            <figure>
-                <img src="img/wt-logo.svg" alt="Workout Tracker logo">
-            </figure>
-            <h1 class="workout-tracker__logo-h1">
-                Workout Tracker
-            </h1>
+      <div class="workout-tracker__logo-container">
+        <figure>
+          <img src="img/wt-logo.svg" alt="Workout Tracker logo" />
+        </figure>
+        <h1 class="workout-tracker__logo-h1">Workout Tracker</h1>
+      </div>
+
+      <div class="workout-tracker__interface-container">
+        <div class="workout-tracker__interface-options">
+          <h4 class="workout-tracker__h3">
+            Total Workouts:
+            <span id="totalWorkouts">3</span>
+          </h4>
+          <div class="workout-tracker__custom-select">
+            <select name="sortWorkouts" id="sortWorkouts">
+              <option value="sort-by">Sort by</option>
+              <option value="type">Type</option>
+              <option value="date">Date</option>
+              <option value="distance">Distance</option>
+              <option value="date">Time</option>
+              <option value="date">Heart Rate</option>
+            </select>
+          </div>
+
+          <button class="workout-tracker__button-delete" id="deleteAllWorkouts">
+            Delete All
+          </button>
         </div>
 
-        <div class="workout-tracker__interface-container">
-            <div class="workout-tracker__interface-options">
-                <h4 class="workout-tracker__h3">
-                    Total Workouts:
-                    <span id="totalWorkouts"></span>
-                </h4>
-                <select name="sortWorkouts" id="sortWorkouts">
-                    <option value="sort-by">Sort by</option>
-                    <option value="type">Type</option>
-                    <option value="date">Date</option>
-                    <option value="distance">Distance</option>
-                    <option value="date">Time</option>
-                    <option value="date">Heart Rate</option>
-                </select>
+        <h3 id="emptyMessage">
+          No workouts yet. Click on the map to add a new one!
+          <figure>
+            <img src="img/arrow-left-icon.svg" alt="Arrow pointing left" />
+          </figure>
+        </h3>
 
-                <button class="workout-tracker__button-delete" id="deleteAllWorkouts">
-                    Delete All
-                </button>
+        <form id="workoutForm">
+          <fieldset>
+            <label for="workoutForm">Workout type</label>
+            <select name="workoutType" id="workoutType">
+              <option value="running">Running</option>
+              <option value="cycling">Cycling</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label for="distance">Distance</label>
+            <input
+              type="number"
+              name="distance"
+              id="distance"
+              placeholder="Km"
+            />
+          </fieldset>
+          <fieldset>
+            <label for="time">Time</label>
+            <input type="number" name="time" id="time" placeholder="Minutes" />
+          </fieldset>
+          <fieldset>
+            <label for="heartRate">Heart Rate</label>
+            <input
+              type="number"
+              name="heartRate"
+              id="heartRate"
+              placeholder="Bpm"
+            />
+          </fieldset>
+          <button type="submit">Add</button>
+        </form>
+
+        <div id="workoutList">
+          <div class="workout-tracker__workout-card">
+            <div class="workout-card__type-icon">
+              <figure>
+                <img src="img/cycling-icon.svg" alt="" />
+              </figure>
             </div>
-
-            <h3 id="emptyMessage">
-                No workouts yet. Click on the map to add a new one! 
+            <div class="workout-card__workout-info">
+              <h2 class="workout-tracker__h2">
+                <span id="workoutTypeText">Cycling</span>
+                on <span id="workoutDateText">August 18</span>
+              </h2>
+              <h3 class="workout-tracker__h3" id="workoutLocation">
+                Av. 25 de Abril, Lisboa
+              </h3>
+            </div>
+            <div class="workout-card__workout-data">
+              <div class="workout-data__distance">
                 <figure>
-                    <img src="img/arrow-left-icon.svg" alt="Arrow pointing left">
+                  <img src="img/distance-icon.svg" alt="Road icon in blue" />
                 </figure>
-            </h3>
-
-            <form id="workoutForm">
-                <fieldset>
-                    <label for="workoutForm">Workout type</label>
-                    <select name="workoutType" id="workoutType">
-                        <option value="running">Running</option>
-                        <option value="cycling">Cycling</option>
-                    </select>
-                </fieldset>
-                <fieldset>
-                    <label for="distance">Distance</label>
-                    <input type="number" name="distance" id="distance" placeholder="Km">
-                </fieldset>
-                <fieldset>
-                    <label for="time">Time</label>
-                    <input type="number" name="time" id="time">
-                </fieldset>
-                <fieldset>
-                    <label for="heartRate">Heart Rate</label>
-                    <input type="number" name="heartRate" id="heartRate">
-                </fieldset>
-                <button type="submit">Add</button>
-            </form>
-
-            <div id="workoutList">
-                <div class="workout-tracker__workout-card">
-                    <div class="workout-card__type-icon">
-                        <figure>
-                            <img src="img/cycling-icon.svg" alt="">
-                        </figure>
-                    </div>
-                    <div class="workout-card__workout-info">
-                        <h2 class="workout-tracker__h2">
-                            <span id="workoutTypeText">Cycling</span>
-                            on <span id="workoutDateText">August 18</span>
-                        </h2>
-                        <h3 class="workout-tracker__h3" id="workoutLocation">
-                            Av. 25 de Abril, Lisboa
-                        </h3>
-                    </div>
-                    <div class="workout-card__workout-data">
-                        <div class="workout-data__distance">
-                            <figure>
-                                <img src="img/distance-icon.svg" alt="Road icon in blue">
-                            </figure>
-                            <p id="workoutDistance">
-                                15km
-                            </p>
-                        </div>
-                        <div class="workout-data__duration">
-                            <figure>
-                                <img src="img/duration-icon.svg" alt="Clock icon in blue">
-                            </figure>
-                            <p id="workoutDuration">
-                                30min
-                            </p>
-                        </div>
-                        <div class="workout-data__bpm">
-                            <figure>
-                                <img src="img/bpm-icon.svg" alt="Heart rate icon in blue">
-                            </figure>
-                            <p id="workoutBpm">
-                                110bpm
-                            </p>
-                        </div>
-                    </div>
-                    <div class="workout-card__options">
-                        <button id="deleteWorkout">
-                            <img src="img/delete-icon.svg" alt="Delete icon in red">
-                        </button>
-                        <button id="editWorkout">
-                            Edit workout
-                        </button>
-                    </div>
-                </div>
+                <p id="workoutDistance">15km</p>
+              </div>
+              <div class="workout-data__duration">
+                <figure>
+                  <img src="img/duration-icon.svg" alt="Clock icon in blue" />
+                </figure>
+                <p id="workoutDuration">30min</p>
+              </div>
+              <div class="workout-data__bpm">
+                <figure>
+                  <img src="img/bpm-icon.svg" alt="Heart rate icon in blue" />
+                </figure>
+                <p id="workoutBpm">110bpm</p>
+              </div>
             </div>
+            <div class="workout-card__options">
+              <button id="deleteWorkout">
+                <img src="img/delete-icon.svg" alt="Delete icon in red" />
+              </button>
+              <button id="editWorkout">Edit workout</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="app.js"></script>
