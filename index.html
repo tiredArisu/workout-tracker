@@ -10,6 +10,71 @@
     <title>Workout tracker</title>
   </head>
   <body>
+    <div id="workoutMap"</div>
+    <div id="workoutMapInterface">
+        <div class="workout-tracker__logo-container">
+            <figure>
+                <img src="img/wt-logo.svg" alt="Workout Tracker logo">
+            </figure>
+            <h1 class="workout-tracker__logo-h1">
+                Workout Tracker
+            </h1>
+        </div>
+
+        <div class="workout-tracker__interface-container">
+            <div class="workout-tracker__interface-options">
+                <h4 class="workout-tracker__h3">
+                    Total Workouts:
+                    <span id="totalWorkouts"></span>
+                </h4>
+                <select name="sortWorkouts" id="sortWorkouts">
+                    <option value="sort-by">Sort by</option>
+                    <option value="type">Type</option>
+                    <option value="date">Date</option>
+                    <option value="distance">Distance</option>
+                    <option value="date">Time</option>
+                    <option value="date">Heart Rate</option>
+                </select>
+
+                <button class="workout-tracker__button-delete" id="deleteAllWorkouts">
+                    Delete All
+                </button>
+            </div>
+
+            <h3 id="emptyMessage">
+                No workouts yet. Click on the map to add a new one! 
+                <figure>
+                    <img src="img/arrow-lefticon.svg" alt="Arrow pointing left">
+                </figure>
+            </h3>
+
+            <form id="workoutForm">
+                <fieldset>
+                    <label for="workoutForm">Workout type</label>
+                    <select name="workoutType" id="workoutType">
+                        <option value="running">Running</option>
+                        <option value="cycling">Cycling</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label for="distance">Distance</label>
+                    <input type="number" name="distance" id="distance" placeholder="Km">
+                </fieldset>
+                <fieldset>
+                    <label for="time">Time</label>
+                    <input type="number" name="time" id="time">
+                </fieldset>
+                <fieldset>
+                    <label for="heartRate">Heart Rate</label>
+                    <input type="number" name="heartRate" id="heartRate">
+                </fieldset>
+                <button type="submit">Add</button>
+            </form>
+
+            <div id="workoutList"></div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
