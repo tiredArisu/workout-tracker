@@ -44,7 +44,7 @@
             <h3 id="emptyMessage">
                 No workouts yet. Click on the map to add a new one! 
                 <figure>
-                    <img src="img/arrow-lefticon.svg" alt="Arrow pointing left">
+                    <img src="img/arrow-left-icon.svg" alt="Arrow pointing left">
                 </figure>
             </h3>
 
@@ -71,7 +71,58 @@
                 <button type="submit">Add</button>
             </form>
 
-            <div id="workoutList"></div>
+            <div id="workoutList">
+                <div class="workout-tracker__workout-card">
+                    <div class="workout-card__type-icon">
+                        <figure>
+                            <img src="img/cycling-icon.svg" alt="">
+                        </figure>
+                    </div>
+                    <div class="workout-card__workout-info">
+                        <h2 class="workout-tracker__h2">
+                            <span id="workoutTypeText">Cycling</span>
+                            on <span id="workoutDateText">August 18</span>
+                        </h2>
+                        <h3 class="workout-tracker__h3" id="workoutLocation">
+                            Av. 25 de Abril, Lisboa
+                        </h3>
+                    </div>
+                    <div class="workout-card__workout-data">
+                        <div class="workout-data__distance">
+                            <figure>
+                                <img src="img/distance-icon.svg" alt="Road icon in blue">
+                            </figure>
+                            <p id="workoutDistance">
+                                15km
+                            </p>
+                        </div>
+                        <div class="workout-data__duration">
+                            <figure>
+                                <img src="img/duration-icon.svg" alt="Clock icon in blue">
+                            </figure>
+                            <p id="workoutDuration">
+                                30min
+                            </p>
+                        </div>
+                        <div class="workout-data__bpm">
+                            <figure>
+                                <img src="img/bpm-icon.svg" alt="Heart rate icon in blue">
+                            </figure>
+                            <p id="workoutBpm">
+                                110bpm
+                            </p>
+                        </div>
+                    </div>
+                    <div class="workout-card__options">
+                        <button id="deleteWorkout">
+                            <img src="img/delete-icon.svg" alt="Delete icon in red">
+                        </button>
+                        <button id="editWorkout">
+                            Edit workout
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
