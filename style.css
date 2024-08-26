@@ -95,7 +95,7 @@ input {
   --wt-cycling: #ffa400;
   --wt-running: #ef6351;
   --wt-delete: #cc3927;
-  --wt-opacity-bg: 255, 255, 255, 10.5;
+  --wt-opacity-bg: #2b3032;
 
   /*icons*/
   --sort-icon: url("data:image/svg+xml,%3Csvg width='8.305' xmlns='http://www.w3.org/2000/svg' height='11.197' viewBox='806.152 358.8 8.305 11.197' fill='none'%3E%3Cpath d='M809.718 359.035a.853.853 0 0 1 1.175 0l3.321 3.198c.239.23.309.572.179.872a.832.832 0 0 1-.768.495h-6.641a.834.834 0 0 1-.768-.495.779.779 0 0 1 .179-.872l3.323-3.198Zm0 10.728-3.32-3.199a.774.774 0 0 1-.179-.872.83.83 0 0 1 .768-.495h6.638c.335 0 .638.195.768.495s.057.642-.179.872l-3.321 3.199a.855.855 0 0 1-1.175 0Z' style='fill: rgb(255, 255, 255); fill-opacity: 1;' class='fills' data-testid='svg-path'/%3E%3C/svg%3E");
@@ -133,6 +133,7 @@ body {
 /*app interface where almost all interactions will happen*/
 #workoutMapInterface {
   position: absolute;
+  height: 90%;
   top: 35px;
   left: 35px;
   background-color: var(--wt-dark-blue);
@@ -265,7 +266,7 @@ body {
 }
 
 #workoutForm input {
-  color: #2b3032;
+  color: var(--wt-opacity-bg);
 }
 
 #workoutForm button {
@@ -287,4 +288,100 @@ body {
 #workoutForm button:hover {
   background-color: var(--wt-blue);
   color: var(--wt-dark-blue);
+}
+
+/*workout list*/
+#workoutList {
+  margin-top: 30px;
+}
+
+/*workout card*/
+.workout-tracker__workout-card {
+  background-color: var(--wt-opacity-bg);
+  border-radius: 15px;
+  padding: 17px;
+
+  display: grid;
+  grid-template-areas:
+    "icon info options"
+    "icon data options";
+  grid-template-columns: auto 3fr auto;
+  grid-template-rows: 1fr auto;
+  row-gap: 15px;
+  column-gap: 20px;
+}
+
+.workout-tracker__workout-card:not(:first-of-type) {
+  margin-top: 25px;
+}
+
+.workout-card__type-icon {
+  grid-area: icon;
+  align-self: center;
+
+  display: grid;
+  place-items: center;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background-color: var(--wt-cycling);
+}
+
+.workout-card__workout-info {
+  grid-area: info;
+}
+
+.workout-card__workout-info .workout-tracker__h2 {
+  color: white;
+}
+
+.workout-card__workout-info #workoutTypeText {
+  color: var(--wt-cycling);
+  margin-top: 5px;
+}
+
+.workout-card__workout-info .workout-tracker__h3 {
+  color: var(--wt-blue);
+}
+
+.workout-card__workout-data {
+  grid-area: data;
+  display: flex;
+  gap: 14px;
+}
+
+.workout-card__workout-data > div {
+  display: flex;
+  gap: 5px;
+}
+
+.workout-card__workout-data p {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.workout-card__options {
+  grid-area: options;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#deleteWorkout,
+#editWorkout {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#editWorkout {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: white;
 }
